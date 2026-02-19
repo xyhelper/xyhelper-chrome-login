@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "xyhelper-login",
   "description": "获取ChatGPT的token",
-  "version": "1.0",
+  "version": "2.0",
   "permissions": [
     "tabs",
     "webRequest",
@@ -38,5 +38,26 @@
     "32": "images/favicon-32x32.png",
     "48": "images/favicon-32x32.png",
     "128": "images/apple-touch-icon.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://auth.openai.com/*"
+      ],
+      "js": [
+        "scripts/content_script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/injected_script.js"
+      ],
+      "matches": [
+        "https://auth.openai.com/*"
+      ]
+    }
+  ]
 }
