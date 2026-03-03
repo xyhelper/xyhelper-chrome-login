@@ -18,8 +18,13 @@
         const clone = response.clone();
         const url = clone.url;
         
-        if (url && url.includes('/api/accounts/email-otp/validate')) {
-             clone.json().then(data => {
+        const shouldCaptureContinueUrl = url && (
+            url.includes('/api/accounts/email-otp/validate') ||
+            url.includes('/api/accounts/mfa/verify')
+        );
+
+        if (shouldCaptureContinueUrl) {
+            clone.json().then(data => {
                 // 只提取 continue_url
                 if (data && data.continue_url) {
                     console.log('[XYHelper] Intercepted continue_url:', data.continue_url);

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "xyhelper-login",
   "description": "获取ChatGPT的token",
-  "version": "2.0",
+  "version": "2.1",
   "permissions": [
     "tabs",
     "webRequest",
